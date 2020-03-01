@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="3D Cube with CSS">
+    <meta name="author" content="Stef van der Poel">
+    <meta name="theme-color" content="#17a2b8" />
+
+    <!-- Plugin CSS -->
+    <link href="3D_style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="scene" id="scene">
+        <div class="cube" id="cube">
+            <div class="cube__face cube__face--front">
+                <iframe src="https://www.stefvanderpoel.nl"></iframe>
+            </div>
+            <div class="cube__face cube__face--back">back</div>
+            <div class="cube__face cube__face--right">right</div>
+            <div class="cube__face cube__face--left">left</div>
+            <div class="cube__face cube__face--top">top</div>
+            <div class="cube__face cube__face--bottom">bottom</div>
+        </div>
+    </div>
+
+
+    <p>
+        <label> perspective 
+                <input class="perspective-range" type="range" min="200" max="1000" value="600" data-units="px"  id="perspectiveinput" oninput="perspectiveoutput.value = perspectiveinput.value, perspectiveRange()" />
+                <output id="perspectiveoutput">400</output>
+        </label>
+    </p>
+    <p id="perspectiveJS"></p>
+
+    <p>
+        <label>
+            perspective-origin x
+                <input class="origin-x-range" type="range" min="0" max="100" value="50" data-units="%" id="originxinput" oninput="originxoutput.value = originxinput.value, updatePerspectiveOrigin()"/>
+                <output id="originxoutput">50</output>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            perspective-origin y
+                <input class="origin-y-range" type="range" min="0" max="100" value="50" data-units="%" id="originyinput" oninput="originyoutput.value = originyinput.value, updatePerspectiveOrigin()"/>
+                <output id="originyoutput">50</output>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            rotate-x
+                <input class="rotate-x-range" type="range" min="0" max="360" value="0" data-units="%" id="rotatexinput" oninput="rotatexoutput.value = rotatexinput.value, updateTransform()"/>
+                <output id="rotatexoutput">0</output>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            rotate-y
+                <input class="rotate-y-range" type="range" min="0" max="360" value="0" data-units="%" id="rotateyinput" oninput="rotateyoutput.value = rotateyinput.value, updateTransform()"/>
+                <output id="rotateyoutput">0</output>
+        </label>
+    </p>
+
+    <p id="test"></p>
+
+</body>
+
+<!-- Custom scripts for this template -->
+<script src="3D_script_test.js"></script>
+
+</html>
