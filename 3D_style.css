@@ -4,6 +4,76 @@
 
 body {
     font-family: sans-serif;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 10px;
+    color: #333;
+    line-height: 1.5em;
+}
+
+.content-wrap {
+    padding: 10px 30px;
+}
+
+section {
+    display: block;
+    margin-bottom: 1.5em !important;
+}
+
+footer {
+    margin: 60px 0;
+    padding-top: 40px;
+    border-top: 1px solid #CCC;
+    font-size: 0.9em;
+    color: #777;
+}
+
+@media (max-width:576px) {
+    .scene {
+        height: 402px !important;
+    }
+    .cube {
+        width: 210px !important;
+        height: 210px !important;
+        padding: 5px !important;        
+    }
+    .cube__face {
+        width: 200px !important;
+        height: 200px !important;
+        border: 1px solid black !important;
+        line-height: 200px !important;
+        font-size: 20px !important;
+    }
+    .cube iframe {
+        opacity: 0.5;
+        width: 400%;
+        height: 400%;
+        transform: scale(0.25);
+        transform-origin: 0 0;
+    }
+    .cube__face--front {
+        transform: rotateY( 0deg) translateZ(100px) !important;
+    }
+    
+    .cube__face--right {
+        transform: rotateY( 90deg) translateZ(100px) !important;
+    }
+    
+    .cube__face--back {
+        transform: rotateY(180deg) translateZ(100px) !important;
+    }
+    
+    .cube__face--left {
+        transform: rotateY(-90deg) translateZ(100px) !important;
+    }
+    
+    .cube__face--top {
+        transform: rotateX( 90deg) translateZ(100px) !important;
+    }
+    
+    .cube__face--bottom {
+        transform: rotateX(-90deg) translateZ(100px) !important;
+    }
 }
 
 .scene {
@@ -13,6 +83,7 @@ body {
     margin: auto;
     padding: 0px;
     perspective: 900px;
+    overflow: hidden;
 }
 
 .cube {
@@ -28,8 +99,10 @@ body {
 
 .cube iframe {
     opacity: 0.5;
-    width: 100%;
-    height: 100%;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
 }
 
 .cube__face {
@@ -90,4 +163,12 @@ body {
 
 .cube__face--bottom {
     transform: rotateX(-90deg) translateZ(200px);
+}
+
+.controls label {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }

@@ -3,72 +3,80 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="3D Cube with CSS">
+    <meta name="description" content="Building a 3d cube with CSS 3D transform and a Javascript">
     <meta name="author" content="Stef van der Poel">
     <meta name="theme-color" content="#17a2b8" />
 
+    <title>3D Cube with CSS and Javascript</title>
+
+    <!--Favicon entry-->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
     <!-- Plugin CSS -->
     <link href="3D_style.css" rel="stylesheet">
+    <link href="https://www.stefvanderpoel.nl/css/basic.css">
 
 </head>
 
 <body>
-
-    <div class="scene" id="scene">
-        <div class="cube" id="cube">
-            <div class="cube__face cube__face--front">
-                <iframe src="https://www.stefvanderpoel.nl"></iframe>
+    <div class="content-wrap">
+        <section class="header">
+            <h1>3D Cube with CSS and Javascript</h1>
+            <p>In this repo I experiment with the transform3d css parameter. I use this example as the basis of the project: <a href="https://3dtransforms.desandro.com/">https://3dtransforms.desandro.com/.</a> Many thanks to David DeSandro for is comprehensive tutorial on this matter!</p>
+            <p>You can check the code of this site at <a href="https://github.com/Stefvanderpoel/3dCube">https://github.com/Stefvanderpoel/3dCube</a>
+            </p>
+        </section>
+        
+        <section class="scene" id="scene">
+            <div class="cube" id="cube">
+                <div class="cube__face cube__face--front">
+                    <iframe src="https://www.stefvanderpoel.nl"></iframe>
+                </div>
+                <div class="cube__face cube__face--back">back</div>
+                <div class="cube__face cube__face--right">right</div>
+                <div class="cube__face cube__face--left">left</div>
+                <div class="cube__face cube__face--top">top</div>
+                <div class="cube__face cube__face--bottom">bottom</div>
             </div>
-            <div class="cube__face cube__face--back">back</div>
-            <div class="cube__face cube__face--right">right</div>
-            <div class="cube__face cube__face--left">left</div>
-            <div class="cube__face cube__face--top">top</div>
-            <div class="cube__face cube__face--bottom">bottom</div>
-        </div>
+        </section>
+
+        <section class="controls">
+            <label> perspective 
+                    <input class="perspective-range" type="range" min="200" max="2000" value="900" data-units="px"  id="perspectiveinput" oninput="perspectiveoutput.value = perspectiveinput.value, perspectiveRange()" />
+                    <output id="perspectiveoutput">900</output>
+            </label>
+        
+            <label>
+                perspective-origin x
+                    <input class="origin-x-range" type="range" min="0" max="100" value="50" data-units="%" id="originxinput" oninput="originxoutput.value = originxinput.value, updatePerspectiveOrigin()"/>
+                    <output id="originxoutput">50</output>
+            </label>
+            <label>
+                perspective-origin y
+                    <input class="origin-y-range" type="range" min="0" max="100" value="50" data-units="%" id="originyinput" oninput="originyoutput.value = originyinput.value, updatePerspectiveOrigin()"/>
+                    <output id="originyoutput">50</output>
+            </label>
+            <label>
+                rotate-x
+                    <input class="rotate-x-range" type="range" min="0" max="360" value="0" data-units="%" id="rotatexinput" oninput="rotatexoutput.value = rotatexinput.value, updateTransform()"/>
+                    <output id="rotatexoutput">0</output>
+            </label>
+            <label>
+                rotate-y
+                    <input class="rotate-y-range" type="range" min="0" max="360" value="0" data-units="%" id="rotateyinput" oninput="rotateyoutput.value = rotateyinput.value, updateTransform()"/>
+                    <output id="rotateyoutput">0</output>
+            </label>
+        </section>
+
+        <footer>
+            <p>
+                Find out more about <a href="https:www.stefvanderpoel.nl">Stef van der Poel</a>
+            </p>
+            <p>
+                Visit Stef's <a href="https://github.com/Stefvanderpoel"> Github</a> repo
+            </p>
+        </footer>
     </div>
-
-
-    <p>
-        <label> perspective 
-                <input class="perspective-range" type="range" min="200" max="1000" value="600" data-units="px"  id="perspectiveinput" oninput="perspectiveoutput.value = perspectiveinput.value, perspectiveRange()" />
-                <output id="perspectiveoutput">400</output>
-        </label>
-    </p>
-    <p id="perspectiveJS"></p>
-
-    <p>
-        <label>
-            perspective-origin x
-                <input class="origin-x-range" type="range" min="0" max="100" value="50" data-units="%" id="originxinput" oninput="originxoutput.value = originxinput.value, updatePerspectiveOrigin()"/>
-                <output id="originxoutput">50</output>
-        </label>
-    </p>
-
-    <p>
-        <label>
-            perspective-origin y
-                <input class="origin-y-range" type="range" min="0" max="100" value="50" data-units="%" id="originyinput" oninput="originyoutput.value = originyinput.value, updatePerspectiveOrigin()"/>
-                <output id="originyoutput">50</output>
-        </label>
-    </p>
-
-    <p>
-        <label>
-            rotate-x
-                <input class="rotate-x-range" type="range" min="0" max="360" value="0" data-units="%" id="rotatexinput" oninput="rotatexoutput.value = rotatexinput.value, updateTransform()"/>
-                <output id="rotatexoutput">0</output>
-        </label>
-    </p>
-
-    <p>
-        <label>
-            rotate-y
-                <input class="rotate-y-range" type="range" min="0" max="360" value="0" data-units="%" id="rotateyinput" oninput="rotateyoutput.value = rotateyinput.value, updateTransform()"/>
-                <output id="rotateyoutput">0</output>
-        </label>
-    </p>
-
-    <p id="test"></p>
 
 </body>
 
